@@ -298,10 +298,23 @@ class Embed:
         points/lines/surfaces in volume
         points/lines in in surface
     """
-    def __init(self, objsInternal, type)
+    def __init__(self, objsLowDim, typeLowDim, objHighDim, typeHighDim):
+        assert typeLowDim in ['Point','Line','Surface']
+        assert typeHighDim in ['Surface','Volume']
+        if typeLowDim=='Surface':
+            assert typeHighDim=='Volume'
+
+        self.objsLowDim = objsLowDim
+        self.typeLowDim = typeLowDim
+        self.objHighDim = objHighDim
+        self.typeHighDim= typeHighDim
     
-    
-    
+    def write_txt(self):
+        objsLowIndexList = [str(i.index) for i in self.objsLowDim]
+        objsLowIndexListStr = ','.join(objsLowIndexList)
+        txt = "%s{%s} In %s{%d};\n\n"%(self.typeLowDim, objsLowIndexListStr,
+                                      self.typeHighDim, self.objHighDim.index)
+        return txt
     
 class Sphere:
     def __init__(self, xc, yc, zc, r, size):

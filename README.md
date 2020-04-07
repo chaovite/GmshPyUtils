@@ -3,4 +3,4 @@ A python module that contains helper functions and classes to write Gmsh code pr
 
 This module automatically track the numbering of basic gmsh objects, points, lines, lineloops, surfaces, volumes, fields. Each object contains the same method "write_txt" to generate relevant gmsh code piece.
 
-It also contains simple geometric objects such as rectangle, box, ellipse, sphere, ellipsoids from the default kernel.
+It also contains simple geometric objects such as rectangle, box, ellipse, sphere, ellipsoids, built using a bottom-up approach from the default kernel.

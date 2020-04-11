@@ -200,6 +200,27 @@ class Volume:
                self.index, str(index_surfaceloops).strip('[]'))
         return txt
 
+class PhysicalGroup:
+    """
+    create a physical group:
+    Physical line, surface, or volume
+    """
+    def __init__(self, objType, objList, tag):
+        assert objType in ['Line','Surface','Volume']
+        self.tag     = tag        
+        self.objType = objType
+        self.objList = objList
+    
+    def write_txt(self):
+        inds = [o.index for o in self.objList]
+        if type(self.tag) == str:
+            txt  = "Physical %s(%s) = {%s}; \n\n"%(self.objType, self.tag, 
+                                                   str(inds).strip('[]'))
+        else:
+            txt  = "Physical %s(%d) = {%s}; \n\n"%(self.objType, self.tag, 
+                                                   str(inds).strip('[]'))
+        return txt
+
 class Field:
     """
     create a size field
